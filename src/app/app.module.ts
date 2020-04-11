@@ -8,6 +8,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ListQuestionsComponent } from './components/list-questions/list-questions.component';
+import { TopMenuComponent } from './components/top-menu/top-menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ListQuestionsComponent } from './components/list-questions/list-questio
     WelcomeComponent,
     LoginComponent,
     ErrorComponent,
-    ListQuestionsComponent
+    ListQuestionsComponent,
+    TopMenuComponent,
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

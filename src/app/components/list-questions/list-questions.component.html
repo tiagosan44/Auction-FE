@@ -1,19 +1,22 @@
-<table border="1">
-    <caption>My questions</caption>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Created date</th>
-            <th>Updated date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let question of questions">
-            <td>{{question.id}}</td>
-            <td>{{question.description}}</td>
-            <td>{{question.createdDate | date}}</td>
-            <td>{{question.updatedDate | date}}</td>
-        </tr>
-    </tbody>
-</table>
+<h1>List of questions</h1>
+
+<div>
+    <table class="list-questions">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Created date</th>
+                <th>Updated date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let question of questions">
+                <td>{{question.id}}</td>
+                <td>{{question.description}}</td>
+                <td>{{question.createdDate | date}}</td>
+                <td>{{question.updatedDate | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

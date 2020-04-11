@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/core/services/login/login.service';
 
 @Component({
   selector: 'auction-login',
@@ -8,6 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  constructor(private router : Router, 
+    private loginService : LoginService) { }
+
+  ngOnInit(): void {
+  }
+
   username : string 
   password : string
   invalidLogin : boolean = false
@@ -15,15 +22,10 @@ export class LoginComponent implements OnInit {
   handleLogin() : void {
     console.log(this.username)
     console.log(this.password)  
-    if(this.username !== 'santiago' && this.password !== 'dummy') {
-      this.invalidLogin = true 
+    if(this.loginService.authenticate(this.username, this.password)) {
+      this.router.navigate(['welcome', this.username])
       return
     }
-    this.router.navigate(['welcome', this.username])
-  }
-  
-  constructor(private router : Router) { }
-
-  ngOnInit(): void {
+    this.invalidLogin = true 
   }
 }

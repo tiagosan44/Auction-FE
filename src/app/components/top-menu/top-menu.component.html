@@ -1,0 +1,15 @@
+<header >
+    <nav class="nav-bar">
+        <div>Auction</div>
+
+        <ul> 
+            <li><a *ngIf='loginService.isUserLoggedIn()' routerLink="/welcome/santiago">Home</a></li>
+            <li><a *ngIf='loginService.isUserLoggedIn()' routerLink="/questions">Questions</a></li>
+        </ul>
+
+        <ul class="menu-session"> 
+            <li><a *ngIf='!loginService.isUserLoggedIn()' routerLink="/login">Login</a></li>
+            <li><a *ngIf='loginService.isUserLoggedIn()' routerLink="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
