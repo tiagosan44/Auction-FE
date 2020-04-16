@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/core/models/question-model';
+import { WelcomeDataService } from 'src/app/core/services/data/welcome-data.service';
+import { Answer } from 'src/app/core/models/answer-model';
+import { error } from 'protractor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'auction-list-questions',
@@ -8,15 +12,39 @@ import { Question } from 'src/app/core/models/question-model';
 })
 export class ListQuestionsComponent implements OnInit {
 
-  constructor() { }
+  questions : Question[]
+
+  answers : Answer[]
+
+  constructor(
+    private welcomeService : WelcomeDataService,
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
+    this.refreshAnswers()
+
+    this.welcomeService.retrieveAllQuestions().subscribe(
+      response => this.questions = response
+    )
   }
 
-  questions = [ 
-    new Question(1, 'my 1 question', new Date(), new Date),
-    new Question(2, 'my 2 question', new Date(), new Date), 
-    new Question(3, 'my 3 question', new Date(), new Date),
-    new Question(4, 'my 4 question', new Date(), new Date) 
-  ]
+  refreshAnswers() {
+    this.welcomeService.retrieveAnswersByQuestion("1000").subscribe(
+      response => {
+        this.answers = response
+      }
+    )
+  }
+
+  deleteAnswer(answerId : String) : void {
+    this.welcomeService.deleteAnswer("1000", answerId).subscribe(
+      () => this.refreshAnswers(),
+      error => console.log(error)
+    )
+  }
+
+  goQuestion(questionId : String) : void {
+    this.router.navigate(['question', questionId])
+  }
 }

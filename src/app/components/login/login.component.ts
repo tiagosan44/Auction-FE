@@ -17,15 +17,14 @@ export class LoginComponent implements OnInit {
 
   username : string 
   password : string
-  invalidLogin : boolean = false
+  validLogin : boolean = true
 
   handleLogin() : void {
-    console.log(this.username)
-    console.log(this.password)  
-    if(this.loginService.authenticate(this.username, this.password)) {
+    this.loginService.authenticate(this.username, this.password)
+    if(sessionStorage.getItem('authenticatedUser')) {
       this.router.navigate(['welcome', this.username])
       return
     }
-    this.invalidLogin = true 
+    this.validLogin = false
   }
 }

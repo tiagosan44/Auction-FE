@@ -1,1 +1,11 @@
 <h1>Welcome {{name}}!</h1>
+
+<div>
+    Click here to get a customized welcome message
+    <button (click)="getWelcomeMessage()">Get welcome message</button>
+</div>
+
+<div *ngIf='messageFromService'>
+    <h2>Welcome message from service</h2>
+    {{messageFromService}}
+</div>

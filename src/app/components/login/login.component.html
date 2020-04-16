@@ -1,7 +1,7 @@
 <h1>Login</h1>
 
 <div>
-    <div *ngIf='invalidLogin'>Invalid login</div>
+    <div *ngIf='!validLogin'>Invalid login</div>
     <div>
         User name : <input type="text" name="username" [(ngModel)]="username"/>
         Password : <input type="password" name="password" [(ngModel)]="password"/>

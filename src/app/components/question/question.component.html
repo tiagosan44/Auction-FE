@@ -1,0 +1,14 @@
+<div *ngIf="questionForm.dirty && questionForm.invalid">Enter valid values</div>
+<div>
+    <form (ngSubmit)='!questionForm.invalid && saveQuestion()' #questionForm="ngForm">
+        <fieldset>
+            <label>Title</label>
+            <input [(ngModel)]="question.title" name="title" type="text" required="true">
+        </fieldset>
+        <fieldset>
+            <label>Description</label>
+            <input [(ngModel)]="question.description" name="description" type="text" required="true">
+        </fieldset>
+        <button type="submit">Save question</button>
+    </form>
+</div>

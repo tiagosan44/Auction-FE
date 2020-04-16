@@ -13,9 +13,30 @@
         <tbody>
             <tr *ngFor="let question of questions">
                 <td>{{question.id}}</td>
+                <td>{{question.title}}</td>
                 <td>{{question.description}}</td>
-                <td>{{question.createdDate | date}}</td>
-                <td>{{question.updatedDate | date}}</td>
+                <td><button (click)="goQuestion(question.id)">Update</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button (click)='goQuestion("")'>Create question</button>
+
+<h1>List of anwsers</h1>
+
+<div>
+    <table class="list-questions">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let answer of answers">
+                <td>{{answer.id}}</td>
+                <td>{{answer.text}}</td>
+                <td><button (click)="deleteAnswer(answer.id)">Delete</button></td>
             </tr>
         </tbody>
     </table>
